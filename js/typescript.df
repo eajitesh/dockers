@@ -1,0 +1,12 @@
+FROM  nodejs_base 
+
+# Install typescript
+RUN npm install -g typescript
+
+# Install Jasmine
+RUN npm install -g jasmine
+
+RUN mkdir /spec
+RUN mkdir /spec/support
+
+RUN jasmine init

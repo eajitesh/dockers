@@ -1,0 +1,25 @@
+FROM  nodejs_base 
+
+RUN npm install -g typescript
+
+# Install Grunt CLI
+RUN npm install -g grunt-cli
+  
+# Install Bower
+RUN npm install -g bower
+  
+# Install jshint
+RUN npm install -g jshint
+
+# Install Browserify
+RUN npm install -g browserify
+
+# Install Jasmine
+RUN npm install -g jasmine
+
+RUN mkdir /spec
+RUN mkdir /spec/support
+
+RUN jasmine init
+
+RUN jasmine examples
