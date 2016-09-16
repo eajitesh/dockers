@@ -1,0 +1,19 @@
+FROM java8:latest
+
+WORKDIR /
+RUN wget http://mirror.olnevhost.net/pub/apache/maven/maven-3/3.0.5/binaries/apache-maven-3.0.5-bin.tar.gz
+RUN tar xvf apache-maven-3.0.5-bin.tar.gz
+
+RUN mv apache-maven-3.0.5  /usr/local/apache-maven
+ENV M2_HOME=/usr/local/apache-maven
+ENV M2=$M2_HOME/bin 
+ENV PATH=$M2:$PATH
+ENV PATH=$PATH:/usr/bin
+
+ENV JAVA_HOME=/opt/jdk/jdk1.8.0_05
+
+RUN mkdir src
+ADD src /src
+ADD pom.xml /
+
+RUN mvn package
